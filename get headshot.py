@@ -1,3 +1,4 @@
+import sys
 import requests
 import os
 import colorama
@@ -5,6 +6,16 @@ from colorama import Fore, Style
 from itertools import chain
 import warnings
 from urllib3.exceptions import InsecureRequestWarning
+
+def main():
+    print("Auto-save headshot running...")
+    # your existing code here
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] == "run":
+        main()
+    else:
+        print("Usage: python auto_save_headshot.py run")
 
 # remone the fucking annoying ssl warning
 warnings.simplefilter("ignore", InsecureRequestWarning)
@@ -118,4 +129,5 @@ for i in chain(range(1, 20), range(26, 46)):
         print(Fore.YELLOW + f"Unexpected status code {response.status_code} for {url}" + Style.RESET_ALL)
 
 # Final report of successfully saved files
+
 print(Fore.CYAN + "Successfully saved files:" + Style.RESET_ALL, success_ppl)
